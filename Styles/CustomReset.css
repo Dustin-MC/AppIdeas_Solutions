@@ -1,0 +1,123 @@
+/* Note
+ this site styles just work and arent structured */
+
+
+ /********* ********* Variables ********* *********/
+:root {
+  --purple: #6400cc;
+  --themeBackground: #444;
+  --text-size: 1em;
+  --title-size: 1.5em;
+}
+/********* ********* End Variables ********* *********/
+
+
+/********* ********* Reseting styles ********* *********/
+body, body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+  font-size: 1rem;
+  font-family: nunito;
+  text-decoration: none;
+  color: #fff;
+}
+body {
+  font-size: 16px;
+  background: var(--themeBackground);
+}
+
+em{
+  font-style: normal;
+}
+a{
+ color: #ff0;
+ display: inline-block;
+ padding: .2rem;
+}
+a:hover{
+ color: #fff;
+ text-shadow: .1em .1em #6400cc;
+ cursor: pointer;
+}
+
+h1 a{
+ font-size: 1.5em;
+}
+
+h1 a:hover{
+ color: #000
+}
+
+h1 a img{
+ filter: drop-shadow(.2em .2em #ff0);
+}
+
+h1 a:hover img{
+ filter: drop-shadow(.2em .2em #6400cc);
+}
+
+footer{
+ text-align: center;
+ padding: .4rem;
+ padding-bottom: 1rem;
+ border-top: 1px solid var(--purple);
+ background-color: #000;
+}
+/********* ********* End Reseting styles ********* *********/
+
+
+/********* ********* Block modifiers ********* *********/
+.header{
+ padding-bottom: .5em;
+ background-image: linear-gradient(#444, #0008);
+ border-bottom: 2px solid #000;
+ text-align: center;
+}
+
+main{
+ padding: .4rem;
+ max-width: 720px;
+ margin: 0 auto;
+}
+
+h1{
+ font-size: calc(2 *var(--text-size));
+}
+
+.header p{
+ margin-left: .4rem;
+}
+
+ul{margin-left: 1.5rem;}
+
+footer{
+ margin-top: 1rem;
+}
+
+footer header{
+ font-size: calc(1.5 *var(--text-size));
+}
+
+.section{
+ margin-top: 1rem;
+ border-radius: 1rem 0;
+ padding: .4rem;
+ background: linear-gradient(90deg, #222, #000);
+ box-shadow: #666 -.1em -.1em .2em, #000 .1em .1em .2em;
+}
+
+.section__header b{
+ font-size: calc(1.5*var(--text-size));
+}
+
+table{
+ border-collapse: collapse;
+}
+
+td, th{
+ border: 1px solid #fff;
+ padding: .2rem
+}
+/********* ********* End Block modifiers ********* *********/
