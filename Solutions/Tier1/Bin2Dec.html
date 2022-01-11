@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Bin2Dec solution (App Ideas)</title>
+ <link rel="shortcut icon" href="../../Sources/github.svg">
+ <link rel="stylesheet" href="../../Styles/DefaultStyles.css">
+ <link rel="stylesheet" href="../../Styles/bin2dec.css">
+</head>
+
+<body>
+ <header class="header">
+  <h1>
+   <a tabindex="1" href="https://dustin-mc.github.io/AppIdeas_Solutions/">
+    <img src="../../Sources/github.svg" alt="github image"> GitHub - App Ideas
+    <img src="../../Sources/github.svg" alt="github image"><br>(Solutions)
+   </a>
+  </h1>
+  <p>In this web site you'll find a compilation of (possible) solutions to the proposed exercises on the <b>"app-ideas"</b> github web site</p>
+ </header>
+ <main>
+  <header class="e-header">
+   <h2>Bin2Dec (Binariy to Decimal)</h2>
+   <p>This is a binary to decimal converter or calculator
+    <br><br>Allows the user enter a binary input and the site convert that data into a decimal equivalent (base10)
+   </p>
+  </header>
+  <div class="solution">
+   <form>
+    <label for="binary">Binary value
+     <input tabindex="2" id="binary" type="text" maxlength="32" placeholder="Enter some binary number">
+    </label>
+    <label for="decimal">Decimal equivalent (base10)
+     <input class="input" readonly id="decimal" type="text" placeholder="Decimal equivalet">
+    </label>
+    <input tabindex="3" class="button" type="button" value="Calculate" id="button_calculate">
+    <input tabindex="4" class="button" type="button" value="Clear" id="button_clear">
+   </form>
+  </div>
+ </main>
+ <footer>
+  <header>IMPORTANT!</header>
+  All the content of this web site is under a cc license (by, nc, nd)
+  <br><br>This site is not related to the official page (app ideas), it is only a compilation of (possible) solutions to the exercises presented on the corresponding website.
+  <br><br>View GitHub Author profile: <b><a tabindex="5" href="https://github.com/Dustin-MC" target="_blank" rel="noopener">"Dustin MC"</a></b>
+ </footer>
+
+ <style>
+  .e-header{
+   text-align: center;
+  }
+  .e-header h2{
+   font-size: 2em;
+  }
+  .solution form label{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin-top: 1em;
+   font-size: 1.5em;
+   text-align: center;
+  }
+  .solution form label:nth-child(1){
+   margin-top: .6em;
+  }
+  .solution form input{
+   color: black;
+   text-align: center;
+   outline: none;
+   border: 2px solid #000;
+   margin: 0 2em;
+   font-size: 1.5rem;
+   border-radius: .5rem 0;
+   width: 90%;
+   max-width: 720px;
+   height: 3em;
+  }
+  .solution form input:hover{
+   border: 2px solid #0Ff;
+  }
+  .solution form .input:hover{
+   border-color: black;
+  }
+  .solution form input:focus{
+   border: 2px solid #0Ff;
+  }
+  .solution form .input:focus{
+   border-color: black;
+  }
+  
+
+  .solution form .button{
+   color: #000;
+   display: block;
+   margin: .5em auto 0;
+   width: 250px;
+   padding: .5rem;
+   font-size: 2em;
+   border-radius: .5em 0;
+   background: #888;
+   outline: none;
+   border: none;
+  }
+  .solution form .button:hover{
+   background: #fff;
+  }
+ </style>
+
+ <script>
+  let inputBinary= document.getElementById("binary")
+  let inputDecimal= document.getElementById("decimal")
+  let decValue=0
+
+  document.getElementById("button_clear").onclick= function(){
+   Clear()
+  }
+
+  document.getElementById("button_calculate").onclick= function(){
+   decValue= 0
+   let binString= document.getElementById("binary").value
+   binString= binString.toString()
+
+   for (let i=0; i<binString.length; i++){
+    let binDigit= parseInt(binString[binString.length-(i+1)])
+    if(i==0 && binDigit==1){
+     decValue+=1
+     continue
+    }
+    if(binDigit==0 || binDigit==1){
+     if(binDigit==1){
+      decValue+= 2**i
+     }
+    }
+    else{
+     decValue= 0
+     Clear()
+     BinError()
+     break
+    }
+   }
+   document.getElementById("decimal").readonly= false
+   document.getElementById("decimal").value= decValue
+   document.getElementById("decimal").readonly=true
+   decValue= 0
+   
+
+
+   /* try {
+    for (let i=2; i<=binString.length; i++){
+     if(binString[binString.length-i]==1){
+      decValue+= 2**(i-1)
+     }
+     else if(binString[binString.length-i]==0){}
+     else{
+      break
+     }
+    }
+    alert(decValue)
+    decValue=0
+   } catch{
+   } */
+  }
+  
+  function Clear(){
+   inputBinary.value=""
+   inputDecimal.value=""
+   decValue=0
+  }
+  
+  function BinError(){
+   decValue= 0
+   alert("Binary sistem just allow to use '0' and '1'")
+   Clear()
+  }
+ </script>
+</body>
+</html>
