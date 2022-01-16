@@ -66,3 +66,11 @@ footer{
 footer header{
  font-size: 1.5em;
 }
+
+
+.e-header{
+ text-align: center;
+}
+.e-header h2{
+ font-size: 2em;
+}

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <link rel="shortcut icon" href="../../Sources/github.svg">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Border Radius Preview solution (App Ideas)</title>
+
+ <link rel="stylesheet" href="../../Styles/DefaultStyles.css">
+</head>
+
+<body>
+ <header class="header">
+  <h1>
+   <a href="https://dustin-mc.github.io/AppIdeas_Solutions/">
+    <img src="../../Sources/github.svg" alt="github image"> GitHub - App Ideas
+    <img src="../../Sources/github.svg" alt="github image"><br>(Solutions)
+   </a>
+  </h1>
+  <p>In this web site you'll find a compilation of (possible) solutions to the proposed exercises on the <b>"app-ideas"</b> github web site</p>
+ </header>
+ <main>
+  <section class="content">
+   <header class="e-header">
+    <h2>Border-Radius-Previewer</h2>
+    <p>Rounded border in real time previewer (4 controllers)
+     <br><br>In this site you can modify and view in real time how the parameter of the border radius acts on a box
+    </p>
+   </header>
+   <div class="square" id="square1"></div>
+
+   <div class="container-copyableElement">
+    <span><b>Border Radius value: </b></span>
+    <input type="text" value="20% 0% 20% 0%" class="copyableElement">
+    <span class="copyableElement__button">Copy</span>
+   </div>
+
+   <label for="border1_tl" class="label">
+    Top-left radius:
+   </label>
+   <input id="border1_tl" type="range" min="0" max="100" step="1" value="20">
+   
+   <label class="label" for="border1_tr">
+    Top-right radius:
+   </label>
+   <input  id="border1_tr" type="range" min="0" max="100" step="1" value="0">
+   
+   <label class="label" for="border1_br">
+    Bottom-left radius:
+   </label>
+   <input id="border1_br" type="range" min="0" max="100" step="1" value="0">
+   
+   <label class="label" for="border1_bl">
+    Bottom-right radius:
+   </label>
+   <input id="border1_bl" type="range" min="0" max="100" step="1" value="20">
+  </section>
+
+  <section class="content">
+   <header class="e-header">
+    <h2>Border-Radius-Previewer</h2>
+    <p>Rounded border in real time previewer (8 controllers)
+     <br><br>In this site you can modify and view in real time how the parameter of the border radius acts on a box
+    </p>
+   </header>
+   <div class="square" id="square2"></div>
+
+   <div class="container-copyableElement">
+    <span><b>Border Radius value: </b></span>
+    <input type="text" value="20%/20% 0%/0% 20%/20% 0%/0%" class="copyableElement">
+    <span class="copyableElement__button">Copy</span>
+   </div>
+
+   <label for="border2_tlx" class="label">
+    Top-left x radius:
+   </label>
+   <input id="border2_tlx" type="range" min="0" max="100" step="1" value="20">
+
+   <label for="border2_tly" class="label">
+    Top-left y radius:
+   </label>
+   <input id="border2_tly" type="range" min="0" max="100" step="1" value="20">
+   
+   <label class="label" for="border2_trx">
+    Top-right x radius:
+   </label>
+   <input  id="border2_trx" type="range" min="0" max="100" step="1" value="0">
+
+   <label class="label" for="border2_try">
+    Top-right y radius:
+   </label>
+   <input  id="border2_try" type="range" min="0" max="100" step="1" value="0">
+   
+   <label class="label" for="border2_blx">
+    Bottom-left x radius:
+   </label>
+   <input id="border2_blx" type="range" min="0" max="100" step="1" value="20">
+   
+   <label class="label" for="border2_bly">
+    Bottom-left y radius:
+   </label>
+   <input id="border2_bly" type="range" min="0" max="100" step="1" value="20">
+   
+   <label class="label" for="border2_brx">
+    Bottom-right x radius:
+   </label>
+   <input id="border2_brx" type="range" min="0" max="100" step="1" value="0">
+   
+   <label class="label" for="border2_bry">
+    Bottom-right y radius:
+   </label>
+   <input id="border2_bry" type="range" min="0" max="100" step="1" value="0">
+  </section>
+
+ </main>
+ <footer>
+  <header>IMPORTANT!</header>
+  All the content of this web site is under a cc license (by, nc, nd)
+  <br><br>This site is not related to the official page (app ideas), it is only a compilation of (possible) solutions to the exercises presented on the corresponding website.
+  <br><br>View GitHub Author profile: <b><a href="https://github.com/Dustin-MC" target="_blank" rel="noopener">"Dustin MC"</a></b>
+ </footer>
+
+ <style>
+  .content{
+   display: flex;
+   flex-direction: column;
+   padding: 1rem;
+   box-shadow: -.1em -.1em .2em #fff, .1em .1em .2em #000;
+  }
+
+  .content:nth-child(2){
+   margin-top: 2rem;
+  }
+
+  .square{
+   margin: 1em auto 0;
+   height: 300px;
+   width: 300px;
+   background-image: linear-gradient(-45deg, #0ff, #6400cc, #f0f);
+   border-radius: 20% 0;
+   box-shadow: -.1em -.1em .2em #fff, .1em .1em .2em #000;
+  }
+  
+  .label{
+   margin-top: 1em
+  }
+  
+  .container-copyableElement{
+   display: flex;
+   align-items: center;
+   margin: 1rem auto 0;
+   font-size: 1.2rem;
+  }
+  
+  .copyableElement{
+   background: none;
+   display: block;
+   text-align: center;
+   outline: none;
+   border: none;
+   margin-left: 1rem;
+   font-size: 1.2rem;
+  }
+  
+  .copyableElement__button{
+   margin-left: 1rem;
+   padding: .4rem;
+   box-shadow: -.1em -.1em .2em #fff, .1em .1em .2em #000;
+  }
+  
+
+ </style>
+
+ <script>
+  function ChangeBR1(){
+   let square= document.getElementById("square1"),
+   border1_tl= document.getElementById("border1_tl").value,
+   border1_tr= document.getElementById("border1_tr").value,
+   border1_bl=document.getElementById("border1_bl").value,
+   border1_br=document.getElementById("border1_br").value
+   square.setAttribute("style", `border-radius: ${border1_tl}% ${border1_tr}% ${border1_bl}% ${border1_br}%`)
+   document.getElementsByClassName("copyableElement")[0].value= `${border1_tl}% ${border1_tr}% ${border1_bl}% ${border1_br}%`
+  }
+  document.getElementById("border1_tl").addEventListener("input", ChangeBR1)
+  document.getElementById("border1_tr").addEventListener("input", ChangeBR1)
+  document.getElementById("border1_bl").addEventListener("input", ChangeBR1)
+  document.getElementById("border1_br").addEventListener("input", ChangeBR1)
+  
+  function ChangeBR2(){
+   let square= document.getElementById("square2"),
+   border2_tlx= document.getElementById("border2_tlx").value,
+   border2_tly= document.getElementById("border2_tly").value,
+   border2_trx= document.getElementById("border2_trx").value,
+   border2_try= document.getElementById("border2_try").value,
+   border2_blx=document.getElementById("border2_blx").value,
+   border2_bly=document.getElementById("border2_bly").value,
+   border2_brx=document.getElementById("border2_brx").value
+   border2_bry=document.getElementById("border2_bry").value
+   square.setAttribute("style", `border-radius: ${border2_tlx}% ${border2_trx}% ${border2_brx}% ${border2_blx}%/ ${border2_tly}% ${border2_try}% ${border2_bry}% ${border2_bly}%`)
+   document.getElementsByClassName("copyableElement")[1].value= `${border2_tlx}% ${border2_trx}% ${border2_brx}% ${border2_blx}%/ ${border2_tly}% ${border2_try}% ${border2_bry}% ${border2_bly}%`
+  }
+  document.getElementById("border2_tlx").addEventListener("input", ChangeBR2)
+  document.getElementById("border2_tly").addEventListener("input", ChangeBR2)
+  document.getElementById("border2_trx").addEventListener("input", ChangeBR2)
+  document.getElementById("border2_try").addEventListener("input", ChangeBR2)
+  document.getElementById("border2_blx").addEventListener("input", ChangeBR2)
+  document.getElementById("border2_bly").addEventListener("input", ChangeBR2)
+  document.getElementById("border2_brx").addEventListener("input", ChangeBR2)
+  document.getElementById("border2_bry").addEventListener("input", ChangeBR2)
+
+
+  //copy script
+  document.querySelectorAll(".copyableElement__button").forEach($copyButton => {
+   $copyButton.onclick= function(){ CopyElement(this.parentElement); }
+  });
+  
+  function CopyElement($copyableElementContainer){
+   /* Selecting elements */
+   let $copyableItem= $copyableElementContainer.querySelector(".copyableElement"),
+   $copyButton= $copyableElementContainer.querySelector(".copyableElement__button");
+   /* Copying the value */
+   try { navigator.clipboard.writeText($copyableItem.value); }
+   catch (error) {
+    /* For dont supported navigator.clipboard */
+    console.info("Copied with no standard code \n(js scope line143), because:", error);
+    $copyableItem.select();
+    document.execCommand("copy");
+   }
+   /* Showing that the value has been copied */
+   $copyButton.innerText= "Copied";
+   setTimeout(() => { $copyButton.innerText= "Copy"; }, 1000);
+  }
+ </script>
+</body>
+</html>
