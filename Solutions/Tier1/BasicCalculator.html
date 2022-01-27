@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <link rel="shortcut icon" href="../../Sources/github.svg">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Basic calculator</title>
+
+ <link rel="stylesheet" href="../../Styles/DefaultStyles.css">
+</head>
+
+<body>
+ <header class="header">
+  <h1>
+   <a href="https://dustin-mc.github.io/AppIdeas_Solutions/">
+    <img src="../../Sources/github.svg" alt="github image"> GitHub - App Ideas
+    <img src="../../Sources/github.svg" alt="github image"><br>(Solutions)
+   </a>
+  </h1>
+  <p>In this web site you'll find a compilation of (possible) solutions to the proposed exercises on the <b>"app-ideas"</b> github web site</p>
+ </header>
+ <main>
+  <header class="e-header">
+   <h2>Basic calculator</h2>
+   <p>Basic calculator thats only does one operation at time
+    <br><br>Addition, subtraction, multiplication and division
+   </p>
+  </header>
+  <div class="calculator">
+   <span class="calculator__model">Model 22.01</span>
+   <input class="calculator__display" placeholder="Eight digits max" maxlength="8"></input>
+   <div class="calculator__body">
+    <div class="div">
+     <button class="calculator__key" id="ac">AC</button>
+     <button class="calculator__key" id="seven">7</button>
+     <button class="calculator__key" id="four">4</button>
+     <button class="calculator__key" id="one">1</button>
+     <button class="calculator__key" id="cero">0</button>
+    </div>
+
+    <div class="div">
+     <button class="calculator__key" id="invert">+/-</button>
+     <button class="calculator__key" id="eight">8</button>
+     <button class="calculator__key" id="five">5</button>
+     <button class="calculator__key" id="two">2</button>
+     <button class="calculator__key" id="point">.</button>
+    </div>
+
+    <div class="div">
+     <button class="calculator__key" id="division">/</button>
+     <button class="calculator__key" id="nine">9</button>
+     <button class="calculator__key" id="six">6</button>
+     <button class="calculator__key" id="three">3</button>
+     <button class="calculator__key" id="clear">C</button>
+    </div>
+
+    <div class="div">
+     <button class="calculator__key" id="mult">x</button>
+     <button class="calculator__key" id="subs">-</button>
+     <button class="calculator__key" id="add">+</button>
+     <button class="calculator__key" id="result">=</button>
+    </div>
+
+   </div>    
+  </div>
+ </main>
+ <footer>
+  <header>IMPORTANT!</header>
+  All the content of this web site is under a cc license (by, nc, nd)
+  <br><br>This site is not related to the official page (app ideas), it is only a compilation of (possible) solutions to the exercises presented on the corresponding website.
+  <br><br>View GitHub Author profile: <b><a href="https://github.com/Dustin-MC" target="_blank" rel="noopener">"Dustin MC"</a></b>
+ </footer>
+
+ <style>
+  .calculator{
+   display: flex;
+   flex-direction: column;
+   margin: 1rem auto 0;
+   padding: .4rem;
+   width: 80%;
+   max-width: 600px;
+   background-color: #222;
+   border: 2px solid #000;
+   box-shadow: -.1rem -.1rem .1rem #fff, .1rem .1rem .1rem #000;
+   border-radius: 1rem;
+  }
+  .calculator__model{
+   align-self: flex-end;
+   margin: .2rem;
+  }
+  .calculator__display{
+   padding: .4rem .2rem;
+   width: 100%;
+   font-size: 2rem;
+   text-align: end;
+   border: none;
+   outline: none;
+   border-radius: .4rem;
+   background-color: rgb(24, 27, 25);
+   box-shadow: inset -.1rem -.1rem .1rem #fff8, inset .1rem .1rem .1rem #0008;
+  }
+  .calculator__body{
+   display: flex;
+  }
+  .div{
+   width: 25%;
+   margin-top: .4rem;
+   display: flex;
+   flex-direction: column;
+  }
+  .div button{
+   padding: .8rem;
+   margin: .4rem;
+   font-size: 1.2rem;
+   background-color: #888;
+   color: #000;
+   box-shadow: -.1rem -.1rem .1rem #fff, .1rem .1rem .1rem #000;
+  }
+  #result{
+   flex-grow: 1;
+  }
+  
+  .div .noFunction{
+   background-color: #222;
+   border-color: transparent;
+   color: #888;
+   box-shadow: .1rem .1rem .1rem #fff, -.1rem -.1rem .1rem #000;
+ }
+ </style>
+
+ <script>
+  let numberDisplay= 0,
+  lastResult= 0,
+  operation= "+",
+  display= document.getElementsByClassName("calculator__display")[0],
+
+  cero= document.getElementById("cero").onclick= ()=>{AddNumber(0)},
+  one= document.getElementById("one").onclick= ()=>{AddNumber(1)},
+  two= document.getElementById("two").onclick= ()=>{AddNumber(2)},
+  three= document.getElementById("three").onclick= ()=>{AddNumber(3)},
+  four= document.getElementById("four").onclick= ()=>{AddNumber(4)},
+  five= document.getElementById("five").onclick= ()=>{AddNumber(5)},
+  six= document.getElementById("six").onclick= ()=>{AddNumber(6)},
+  seven= document.getElementById("seven").onclick= ()=>{AddNumber(7)},
+  eight= document.getElementById("eight").onclick= ()=>{AddNumber(8)},
+  nine= document.getElementById("nine").onclick= ()=>{AddNumber(9)},
+  poin= document.getElementById("point").onclick= ()=>{AddNumber(".")},
+  
+  inver=document.getElementById("invert").onclick=()=>{
+   display.value= display.value*(-1)
+  },
+  clear= document.getElementById("clear").onclick=()=>{
+   display.value= display.value.substring(0, display.value.length -1)
+  } ,
+  clearAll= document.getElementById("ac").onclick=()=>{
+   display.value=""
+   operation= "+"
+   lastResult= 0
+   numberDisplay= 0
+   DisableOperations(false)
+  },
+  resultButton= document.getElementById("result").onclick=()=>{
+   if(display.value=="" || isNaN(parseFloat(display.value))){}
+   else{
+    try {
+     switch(operation){
+      case "+":
+       lastResult= numberDisplay+parseFloat(display.value)
+       break
+      case "-":
+       lastResult= numberDisplay-parseFloat(display.value)
+       break
+      case "x":
+       lastResult= numberDisplay*parseFloat(display.value)
+       break
+      case "/":
+       if(parseFloat(display.value)==0){alert("No possible operation")}
+       else{
+        lastResult= numberDisplay/parseFloat(display.value)
+       }
+       break
+      }
+     } catch (error) {alert(error)}
+    }
+    console.log(lastResult)
+    DisableOperations(false)
+    numberDisplay= lastResult
+    display.value= numberDisplay
+   },
+  
+  add= document.getElementById("add"),
+  subs= document.getElementById("subs"),
+  mult= document.getElementById("mult"),
+  divi= document.getElementById("division")
+
+  add.onclick=()=>{
+   DisableOperations(true, "+")
+  },
+  subs.onclick=()=>{
+   DisableOperations(true, "-")
+  },
+  mult.onclick=()=>{
+   DisableOperations(true, "x")
+  },
+  divi.onclick=()=>{
+   DisableOperations(true, "/")
+  }
+  
+  function AddNumber(number){
+   if(display.value.length<=8){
+    if(display.value.length<=8 && display.value[0]=="-"){
+     display.value+= number
+    }
+    else if(display.value.length<8){
+     display.value+= number
+    }
+    else{ alert("Maximum 8 digits lenght")}
+   }
+   else{ alert("Maximum 8 digits lenght")}
+  }
+
+  function DisableOperations(flag, opSymbol){
+   operation= opSymbol
+   numberDisplay= parseFloat(display.value)
+   display.value= ""
+   if(flag){
+    add.classList.add("noFunction")
+    add.disabled= true;
+    subs.classList.add("noFunction")
+    subs.disabled= true;
+    mult.classList.add("noFunction")
+    mult.disabled= true;
+    divi.classList.add("noFunction")
+    divi.disabled= true;
+   }
+   else{
+    add.classList.remove("noFunction")
+    add.disabled= false;
+    subs.classList.remove("noFunction")
+    subs.disabled= false;
+    mult.classList.remove("noFunction")
+    mult.disabled= false;
+    divi.classList.remove("noFunction")
+    divi.disabled= false;
+   }
+  }
+ </script>
+
+<!-- <script>
+ 
+  
+ result= document.getElementById("result").onclick=()=>{
+  Result()
+ },
+  
+ 
+  
+ 
+ function Result(){
+  if(operation==null|| lastResult== null|| numberDisplay==null){
+   if(isNaN(display.value) || display.value==""){
+    lastResult= 0
+    numberDisplay= 0
+    operation= "+"
+   }
+  }
+  else{
+   CalculateResult()
+  }
+ }
+ 
+ function CalculateResult(){
+  numberDisplay= parseFloat(display.value)
+  if(!( lastResult<=0 || lastResult>0)){lastResult=0}
+  switch(operation){
+   case "+":
+    lastResult= lastResult +numberDisplay
+    break
+    case "-":
+     lastResult= lastResult -numberDisplay
+     break
+     case "x":
+      lastResult= lastResult *numberDisplay
+      break
+      case "/":
+       if(display.value==0){
+        alert("No possible operation")
+        tempResult= 0
+       }
+       else{
+        lastResult= lastResult /numberDisplay
+       }
+       break
+      }
+
+      display.value= lastResult
+     }
+     
+     </script> -->
+</body>
+</html>
