@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <link rel="shortcut icon" href="../../Sources/github.svg">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Christmas Lights (App Ideas)</title>
+
+ <link rel="stylesheet" href="../../Styles/DefaultStyles.css">
+</head>
+
+<body>
+ <header class="header">
+  <h1>
+   <a href="https://dustin-mc.github.io/AppIdeas_Solutions/">
+    <img src="../../Sources/github.svg" alt="github image"> GitHub - App Ideas
+    <img src="../../Sources/github.svg" alt="github image"><br>(Solutions)
+   </a>
+  </h1>
+  <p>In this web site you'll find a compilation of (possible) solutions to the proposed exercises on the <b>"app-ideas"</b> github web site</p>
+ </header>
+ <main>
+  <header class="e-header">
+   <h2>Christmas Lights</h2>
+   <p>This simulates the effect of a string of rippling lights
+    <br><br>Similar to the ones displayed during the Christmas Holidays.
+   </p>
+  </header>
+  <div class="chrismasLights">
+   <button class="chrismasLights__power">O</button>
+   <div class="chrismasLights__container">
+    <span class="light light--on"></span>
+    <span class="light light--on"></span>
+    <span class="light light--on"></span>
+    <span class="light light--on"></span>
+    <span class="light light--on"></span>
+    <span class="light light--on"></span>
+    <span class="light light--on"></span>
+    <span class="light light--on"></span>
+    <span class="light light--on"></span>
+    <span class="light light--on"></span>
+    <span class="light light--on"></span>
+    <span class="light light--on"></span>
+    <span class="light light--on"></span>
+    <span class="light light--on"></span>
+   </div>
+   <button class="chrismasLights__settings">V</button>
+  </div>
+ </main>
+ <footer>
+  <header>IMPORTANT!</header>
+  All the content of this web site is under a cc license (by, nc, nd)
+  <br><br>This site is not related to the official page (app ideas), it is only a compilation of (possible) solutions to the exercises presented on the corresponding website.
+  <br><br>View GitHub Author profile: <b><a href="https://github.com/Dustin-MC" target="_blank" rel="noopener">"Dustin MC"</a></b>
+ </footer>
+
+ <style>
+  .chrismasLights{
+   display: flex;
+   margin-top: .5rem;
+  }
+  .chrismasLights__power, .chrismasLights__settings{
+   color: black;
+   margin: 0 .2rem;
+   padding: .2rem;
+   text-align: center;
+   border-radius: 50%;
+  }
+  .chrismasLights__container{
+   flex-grow: 1;
+   display: flex;
+   justify-content: space-around;
+   border-top: 2px solid #282;
+  }
+  .light{
+   display: block;
+   width: .5rem;
+   height: 1rem;
+   border-radius: 20% 20% 50% 50%/ 20% 20% 80% 80%;
+   position: relative;
+   background-color: #fff;
+  }
+
+  .light::before{
+   content: "";
+   position: absolute;
+   top: -5%;
+   width: 100%;
+   height: 20%;
+   background-color: #000;
+  }
+
+  .light--on{
+   animation-duration: 1s;
+   animation-iteration-count: infinite;
+  }
+  .light--on:nth-child(4n+1){
+   background-color: #f00;
+   animation-name: lightOn1;
+   animation-delay: .0s;
+  }
+  .light--on:nth-child(4n+2){
+   background-color: #0f0;
+   animation-name: lightOn2;
+   animation-delay: .25s;
+  }
+  .light--on:nth-child(4n+3){
+   background-color: #f0f;
+   animation-name: lightOn3;
+   animation-delay: .50s;
+  }
+  .light--on:nth-child(4n){
+   background-color: #00f;
+   animation-name: lightOn4;
+   animation-delay: .75s;
+  }
+
+  @keyframes lightOn1 {
+   0%{
+    box-shadow: 0 0 0rem #f00;
+   }
+   30%{
+    box-shadow: 0 0 1rem #f00, 0 0 1rem #f00;
+   }
+   70%{
+    box-shadow: 0 0 1rem #f00, 0 0 1rem #f00;
+   }
+   100%{
+    box-shadow: 0 0 0rem #f00;
+   }
+  }
+  @keyframes lightOn2 {
+   0%{
+    box-shadow: 0 0 0rem #0f0;
+   }
+   30%{
+    box-shadow: 0 0 1rem #0f0, 0 0 1rem #0f0;
+   }
+   70%{
+    box-shadow: 0 0 1rem #0f0, 0 0 1rem #0f0;
+   }
+   100%{
+    box-shadow: 0 0 0rem #0f0;
+   }
+  }
+  @keyframes lightOn3 {
+   0%{
+    box-shadow: 0 0 0rem #f0f;
+   }
+   30%{
+    box-shadow: 0 0 1rem #f0f, 0 0 1rem #f0f;
+   }
+   70%{
+    box-shadow: 0 0 1rem #f0f, 0 0 1rem #f0f;
+   }
+   100%{
+    box-shadow: 0 0 0rem #f0f;
+   }
+  }
+  @keyframes lightOn4 {
+   0%{
+    box-shadow: 0 0 0rem #00f;
+   }
+   30%{
+    box-shadow: 0 0 1rem #00f, 0 0 1rem #00f;
+   }
+   70%{
+    box-shadow: 0 0 1rem #00f, 0 0 1rem #00f;
+   }
+   100%{
+    box-shadow: 0 0 0rem #00f;
+   }
+  }
+ </style>
+ 
+ <script>
+  document.getElementsByClassName("chrismasLights__power")[0].onclick=()=>{
+   if (document.getElementsByClassName("chrismasLights__power")[0].innerHTML=="X"){
+    document.getElementsByClassName("chrismasLights__power")[0].innerHTML="O"
+   }else{document.getElementsByClassName("chrismasLights__power")[0].innerHTML="X"}
+   PowerLights()
+  }
+
+  document.getElementsByClassName("chrismasLights__settings")[0].onclick=()=>{
+   if (document.getElementsByClassName("chrismasLights__settings")[0].innerHTML=="V"){
+    document.getElementsByClassName("chrismasLights__settings")[0].innerHTML="--"
+    //document.getElementsByClassName("settings--container")[0].style.display="flex"
+   }
+   else{
+    document.getElementsByClassName("chrismasLights__settings")[0].innerHTML="V"
+    //document.getElementsByClassName("settings--container")[0].style.display="none"
+   }
+  }
+
+  function PowerLights(){
+   let light= document.getElementsByClassName("light")
+   for(let i=0; i<light.length; i++){
+    light[i].classList.toggle("light--on")
+   }
+  }
+ </script>
+</body>
+</html>
